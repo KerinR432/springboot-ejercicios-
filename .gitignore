@@ -1,0 +1,80 @@
+###############################
+# IntelliJ IDEA
+###############################
+.idea/
+*.iml
+*.iws
+out/
+
+# Archivos de configuración locales
+*.swp
+*.swo
+*.bak
+*.tmp
+
+###############################
+# Maven
+###############################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+###############################
+# Gradle (por si usas alguno)
+###############################
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/**/build/
+!**/test/**/build/
+
+###############################
+# Logs y archivos temporales
+###############################
+*.log
+*.log.*
+logs/
+*.pid
+
+###############################
+# Archivos del sistema
+###############################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+###############################
+# Archivos de entorno / configuración
+###############################
+.env
+*.env
+*.local
+application-*.yml
+application-*.properties
+!application.properties  # mantén el principal
+!application.yml         # mantén el principal
+
+###############################
+# Cache de Spring / Java
+###############################
+.classpath
+.project
+.settings/
+.metadata/
+bin/
+
+###############################
+# Archivos de test y cobertura
+###############################
+*.exec
+*.ec
+*.coverage
+*.idea_modules/
+*.hprof
+test-output/
