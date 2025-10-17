@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario</title>
+</head>
+<body>
+<form action="#" th:action="@{/}" method="post">
+    <table>
+        <tr>
+            <td>Nombre:</td>
+            <td input="text" th:field="*{nombre}"></td>
+            <td th:if="${#filds.hasErrors('nombre')}" th:errors="*{nombre}">Nombre da un Error</td>
+        </tr>
+        <tr>
+            <td>Edad:</td>
+            <td input="text" th:field="*{edad}"></td>
+            <td th:if="${#filds.hasErrors('edad')}" th:errors="*{edad}">Edad en el Error</td>
+        </tr>
+        <tr>
+            <td>Sexo:</td>
+            <td input="text" th:field="*{genero}"></td>
+            <td th:if="${#filds.hasErrors('genero')}" th:errors="*{genero}">Genero en el Error</td>
+        </tr>
+    </table>
+
+
+</form>
+</body>
+</html>
