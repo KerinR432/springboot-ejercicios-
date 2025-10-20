@@ -3,17 +3,17 @@ package com.example.GrasaCorporalObejeto;
 import jakarta.validation.constraints.*;
 
 public class Persona {
-    @Null
+    @NotNull
     @Size(min = 2, max = 30)
-    @NotBlank
     private String nombre;
     @NotNull
-    @Min(18)
     private Integer edad;
+
     private String grasaCorporal;
-    @Pattern(regexp = "[HMX]")
+
     private String genero;
 
+    private double IMC;
     public String getNombre() {
         return nombre;
     }
@@ -42,7 +42,17 @@ public class Persona {
         this.genero = genero;
     }
 
+    public String getGenero() {
+        return genero;
+    }
 
+    public double getIMC() {
+        return IMC;
+    }
+
+    public void setIMC(double IMC) {
+        this.IMC = IMC;
+    }
 
     @Override
     public String toString() {

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creador de Personaje</title>
+</head>
+<body>
+<form action="#" th:action="@{/}" method="post" th:object="${historia}">
+    <table>
+        <legend>NOMBRE DEL PERSONAJE
+            <tr>
+                <td><input type="text" th:field="*{nombre}"></td>
+                <td th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error no hay nombre</td>
+            </tr>
+        </legend>
+    </table>
+    <table>
+        <legend>ROL</legend>
+        <tr>
+            <td><input type="radio" th:field="*{rol}" value="Berserk">Beserk</td>
+            <td><input type="radio" th:field="*{rol}" value="Tanque">Tanque</td>
+            <td><input type="radio" th:field="*{rol}" value="Arquero">Arquero</td>
+            <td><input type="radio" th:field="*{rol}" value="Rogue">Rogue</td>
+
+        </tr>
+    </table>
+    <table>
+        <legend>ARTICULOS</legend>
+        <td><input type="checkbox" th:field="*{obejetos}" value="Anillo">Anillo de Ressitencia</td>
+        <td><input type="checkbox" th:field="*{obejetos}" value="monenas">monedas</td>
+        <td><input type="checkbox" th:field="*{obejetos}" value="Piedra de afilar">Piedra de afilar</td>
+        <td><input type="checkbox" th:field="*{obejetos}" value="invocación">invocación</td>
+    </table>
+
+</form>
+</body>
+</html>
