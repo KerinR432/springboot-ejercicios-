@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creador de Personaje: Rol</title>
+</head>
+<body>
+<form th:action="@{/}" method="post" th:object="${historia}">
+    <fieldset>
+        <legend>ROL</legend>
+
+        <label>
+            <input type="radio" th:field="*{rol}" value="Berserk" /> Berserk
+        </label><br />
+
+        <label>
+            <input type="radio" th:field="*{rol}" value="Tanque" /> Tanque
+        </label><br />
+
+        <label>
+            <input type="radio" th:field="*{rol}" value="Arquero" /> Arquero
+        </label><br />
+
+        <label>
+            <input type="radio" th:field="*{rol}" value="Rogue" /> Rogue
+        </label><br />
+
+        <label>
+            <input type="radio" th:field="*{rol}" value="Sanador" /> Sanador
+        </label><br />
+
+        <label>
+            <input type="radio" th:field="*{rol}" value="Necromance" /> Necromance
+        </label><br />
+
+        <label>
+            <input type="radio" th:field="*{rol}" value="Clerigo" /> Clerigo
+        </label>
+    </fieldset>
+
+    <input type="hidden" th:field="*{nombre}" />
+    <input type="hidden" th:field="*{estado}" />
+
+    <button type="submit">Enviar</button>
+</form>
+</body>
+</html>
