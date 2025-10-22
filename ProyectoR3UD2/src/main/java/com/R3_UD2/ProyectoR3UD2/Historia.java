@@ -49,12 +49,8 @@ public class Historia {
         return heroe;
     }
 
-    public void setHeroe() {
-            heroe.clear();
-            heroe.add(nombre);
-            heroe.add(rol);
-            heroe.add(objetos);
-
+    public void setHeroe(List<String> e) {
+        heroe = e;
     }
 
     @Override
