@@ -1,13 +1,13 @@
-package com.example.D4UD2;
+package codificacion.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class D4UD2Application {
+public class D4Ud2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(D4UD2Application.class, args);
+		SpringApplication.run(D4Ud2Application.class, args);
 	}
 
 }

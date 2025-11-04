@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codificación</title>
+</head>
+<body>
+    <h2 th:text="#{main.titulo}"></h2>
+<!--    <form action="#" th:action="@{/}" method="get" th:object="${persona}">-->
+<!--        <label>Introduce un Nombre:</label>-->
+<!--        <input type="text" th:field="*{nombre}" name="texto" id="">-->
+<!--        <input type="submit" value="Enviar por GET">-->
+<!--    </form>-->
+
+    <form action="#" th:action="@{/}" method="post" th:object="${persona}">
+        <label>Introduce un Animal Fav:</label>
+        <input type="text" th:field="*{animalFav}" name="texto" id="">
+        <input type="submit" value="Enviar por POST">
+
+    </form>
+</body>
+</html>

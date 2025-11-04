@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resultado</title>
+</head>
+<body>
+    <h1>Animal Favorito</h1>
+    <span>su nombre es:<b th:text="${persona.animalFav}"></b></span>
+    <h1>Texto codificado</h1>
+    <span>Su nombre codificado es:</span>
+    <h4>Prueba el enlace para codifcarlo</h4>
+    <a href="formulario1.html?animalFav=${nombreEncode}">volver con get</a>
+</body>
+</html>

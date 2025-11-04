@@ -1,10 +1,10 @@
-package com.example.D4UD2;
+package codificacion.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GrasaCorporalObejetoApplicationTests {
+class D4Ud2ApplicationTests {
 
 	@Test
 	void contextLoads() {
