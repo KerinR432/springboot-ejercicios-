@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creador de Personaje: Articulos</title>
+</head>
+<body>
+<form action="#" th:action="@{/}" method="post" th:object="${historia}">
+    <table>
+        <legend>ARTICULOS</legend>
+        <ul>
+            <li><input type="checkbox" th:field="*{objetos}" value="Anillo">Anillo de Resitencia</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="monedas">Monedas</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="Piedra de afilar">Piedra de afilar</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="invocación">invocación</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="Flauta">Flauta</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="Aguila del regreso">Aguila del regreso</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="Infernales">Llamas Infernales</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="Anillo de Fe">Anillo de Fe</li>
+            <li><input type="checkbox" th:field="*{objetos}" value="Escudo Real">Escudo Real</li>
+        </ul>
+    </table>
+    <tr>
+        <td><button type="submit" name="op" value="+1">enviar</button></td>
+        <button type="submit" name="op" value="-1">Volver</button>
+    </tr>
+
+
+</form>
+</body>
+</html>
