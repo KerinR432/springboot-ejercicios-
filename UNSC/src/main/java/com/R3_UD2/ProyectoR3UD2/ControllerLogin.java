@@ -18,6 +18,7 @@ public class ControllerLogin {
     //*Muestra la pagina principal, comprueba si existe las credencias
     @GetMapping("/")
     public String paginaPrincipal(HttpSession sesion) {
+        //* sino existen, devuelve pagina de iniciar sesión, si existen. Mostrar credenciales
         if (!usuario.equals(sesion.getAttribute("nombre")) || !pass.equals(sesion.getAttribute("contraseña"))) {
             return "redirect:/login";
         }
@@ -25,9 +26,11 @@ public class ControllerLogin {
         return "redirect:/credenciales";
     }
 
+    //* comprovamos si el nombre y la contraseña es igual a la que esta almacenanda ne la base de Datos
     @GetMapping("/login")
     public String paginaLogiarse(HttpSession sesion, @RequestParam(required = false) String nombre,
                                  @RequestParam(required = false) String contraseña) {
+        //*Si es si, devolvemos crendeciales, sino devolvemos la pagina iniciar sesión hasta que sea correcto
         if (usuario.equals(nombre) && pass.equals(contraseña)) {
             sesion.setAttribute("nombre", nombre);
             sesion.setAttribute("contraseña", contraseña);
@@ -36,6 +39,9 @@ public class ControllerLogin {
         return "login";
     }
 
+
+    //*Esto es mostrar la pagina 1 o crendeciales como la he nombrado yo, volvemos a tener una condoción
+    //*si por algun casual entramos en pagina 1. si la crendecial no son correctas o se recuerda, vuelve pagina login
     @GetMapping("/credenciales")
     public String credenciales(HttpSession sesion, Model modelo,
                                @RequestParam(value = "bton", required = false) String valorBoton,
@@ -43,6 +49,7 @@ public class ControllerLogin {
         if (!usuario.equals(sesion.getAttribute("nombre")) || !pass.equals(sesion.getAttribute("contraseña"))) {
             return "redirect:/login";
         }
+        //*Tambien tengo 2 botones, cerrar sesión y ir a pagina 2 o misiones
         modelo.addAttribute("nombreUsuario", sesion.getAttribute("nombre"));
         if ("misiones".equals(valorBoton)) {
             System.out.println("estoy dentro");
@@ -54,6 +61,7 @@ public class ControllerLogin {
         return "credenciales";
     }
 
+    //* Esto muestra pagina 2 o misiones como lo tengo yo, igual tiene 2 botones como ayer
     @GetMapping("/pagina2")
     public String misiones(HttpSession sesion, @RequestParam(value = "bton1", required = false) String valorBton1,
                            @RequestParam(value = "bton2",required = false) String valorBton2) {
@@ -66,6 +74,7 @@ public class ControllerLogin {
         return "pagina2";
     }
 
+    //* cerrar sesión es invalidar la sesion y redirigir directamente a la pagina de logeo
     @GetMapping("/cerrarSesion")
     public String cerrarSesion(HttpSession sesion){
         sesion.invalidate();
