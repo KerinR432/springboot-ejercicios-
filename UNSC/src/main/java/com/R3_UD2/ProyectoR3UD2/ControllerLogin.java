@@ -21,18 +21,18 @@ public class ControllerLogin {
         if (!usuario.equals(sesion.getAttribute("nombre")) || !pass.equals(sesion.getAttribute("contraseña"))) {
             return "redirect:/login";
         }
-        System.out.println("El nombre es:" + sesion.getAttribute("nombre"));
         return "redirect:/credenciales";
     }
 
     @GetMapping("/login")
     public String paginaLogiarse(HttpSession sesion, @RequestParam(required = false) String nombre,
-                                 @RequestParam(required = false) String contraseña) {
+                                 @RequestParam(required = false) String contraseña,Model modelo) {
         if (usuario.equals(nombre) && pass.equals(contraseña)) {
             sesion.setAttribute("nombre", nombre);
             sesion.setAttribute("contraseña", contraseña);
             return "redirect:/credenciales";
         }
+        modelo.addAttribute("Error, Usuario y/0 contraseña incorrecta");
         return "login";
     }
 
