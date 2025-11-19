@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BIENVENIDO EN LA TIENDA</title>
+</head>
+<body>
+    <h1>El menu del dia de hoy</h1>
+    <p th:text="${errores}"></p>
+
+    <div th:unless="${finalCompra}">
+        <form action="/" method="post">
+        <fieldset>
+            <legend>MENU HALO</legend>
+            <p th:each="producto,indice : ${productos}">
+                <label th:text="|${producto} (${precios[indice.index]}$)|"></label>
+                <input type="number" name="cantidades" value="0">
+                <hr>
+        </p>
+    </fieldset>
+        <input type="submit" name="continuar" value="Continuar">
+    <input type="submit" name="compra" value="Terminar comprar">
+    </form>
+    <h2>Acumulado:</h2>
+    <ul>
+        <li th:each="productoYcantidad : ${productosYcantidades}" th:text="${productoYcantidad}"></li>
+    </ul>
+    <h3 th:text="|Total: ${total}"></h3>
+    </div>
+    <div th:if="${finalCompra}">
+        <h2>Resumen Compra</h2>
+        <ul>
+            <li th:each="productoYcantidad : ${productosYcantidades}" th:text="${productoYCantidad}"></li>
+        </ul>
+        <h2>Stock Disponible</h2>
+        <ul>
+            <li th:each="stock : ${productosYstock}" th:text="|${stock.getKey()} : ${stock.getValue}|"></li>
+        </ul>
+    </div>
+</body>
+</html>

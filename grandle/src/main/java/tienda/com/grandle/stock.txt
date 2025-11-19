@@ -1,0 +1,3 @@
+HamburgesaMoa:100
+NuggetsMoa:100
+fishTaco:100
