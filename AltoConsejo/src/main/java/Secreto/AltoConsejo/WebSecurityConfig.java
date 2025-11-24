@@ -1,4 +1,4 @@
-package com.example.securingweb;
+package Secreto.AltoConsejo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -46,6 +46,14 @@ public class WebSecurityConfig {
                         .roles("USER")
                         .build();
 
-        return new InMemoryUserDetailsManager(user);
+
+        UserDetails user2 =
+                User.builder()
+                        .username("moha")
+                        .password(encoder.encode("1234"))
+                        .roles("USER")
+                        .build();
+
+        return new InMemoryUserDetailsManager(user,user2);
     }
 }
