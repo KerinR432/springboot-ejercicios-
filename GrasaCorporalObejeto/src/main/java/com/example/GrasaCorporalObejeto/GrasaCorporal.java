@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class GrasaCorporal {
     @GetMapping("/")
-    public String verFormulario(Persona persona) {
+    public String verFormulario() {
         return "formulario";
     }
 
@@ -18,9 +18,9 @@ public class GrasaCorporal {
         if (bindingResult.hasErrors()) {
             return "formulario";
         }
-        int valor = persona.getGenero() == "H" ? 1 : 2;
+        int valor = persona.getGenero().equals("H") ? 1 : 2;
         double grasas = (1.20 * persona.getIMC()) + (0.23 * persona.getEdad()) - (10.8 * valor) - 5.4;
-        System.out.println(1.20* persona.getIMC()+(0.23* persona.getE   dad())-(10.8*valor));
+        System.out.println(1.20* persona.getIMC()+(0.23* persona.getEdad())-(10.8*valor));
         persona.setGrasaCorporal(String.format("%.2f", grasas));
         return "resultado";
     }

@@ -1,10 +1,10 @@
-package com.example.GrasaCorporalObejeto;
+package com.R3_UD2.ProyectoR3UD2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GrasaCorporalObejetoApplicationTests {
+class CookiesLoginTests {
 
 	@Test
 	void contextLoads() {
