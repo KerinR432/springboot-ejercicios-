@@ -14,6 +14,8 @@ public class carritoControlador {
 
     private RepositorioTienda repositoriotienda;
 
+    public ControladorCarrito
+
     @Bean
     public CommandLineRunner demo(RepositorioTienda repositorio) {
         return (String[] args) -> {
