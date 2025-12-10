@@ -5,7 +5,7 @@
 <form method="post" th:action="@{/}">
 	<p>
 		<p th:text="${errores}" />
-	
+
 	<label>Aficciones:</label>
 	<ol>
 	<li th:each="aficcion : ${aficciones}">
@@ -25,6 +25,6 @@
    <input type="hidden" name="nombre" th:value="${nombre}" />
 
    </span>
-   </form> 
+   </form>
 </body>
 </html>

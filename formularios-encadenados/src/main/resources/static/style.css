@@ -1,0 +1,166 @@
+/* src/main/resources/static/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que el padding no cambie el ancho total */
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para los mensajes de error */
+p[th\:text="${errores}"] {
+    color: #dc3545;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Nuevo estilo añadido para el elemento select (desplegable) */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Ajuste de tipografía para que coincida con los inputs */
+    font-size: 16px;
+    height: 40px; /* Altura estándar */
+}
+
+/* src/main/resources/static/style.css - Nuevas reglas para la Etapa 3 */
+
+label {
+    /* Mantenemos el estilo de label para el título de "Aficciones" */
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+ol {
+    /* Quitamos los puntos o números por defecto si no los queremos */
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+li {
+    /* Espacio entre cada opción de la lista */
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    /* Estilo para la casilla en sí */
+    margin-right: 8px; /* Espacio entre la casilla y el texto */
+    /* Ajustes visuales para que sean fáciles de pulsar */
+    width: 16px;
+    height: 16px;
+    /* Para alineación vertical con el texto si es necesario */
+    vertical-align: middle;
+}
+
+/* Aplicamos estilos al texto de la afición que está junto al checkbox */
+li {
+    /* Usamos flexbox para alinear el checkbox y el texto en la misma línea */
+    display: flex;
+    align-items: center;
+}
+
+/* src/main/resources/static/style.css - Nuevas reglas para la página de Resultados */
+
+h1 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2em; /* Hace que el título sea más grande */
+}
+
+/* Estilos para el texto de la categoría, si lo usas */
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+/* Estilo para la lista ordenada de respuestas */
+ol {
+    /* Quitamos el 'list-style: none' que pusimos antes para que se vean los números */
+    list-style: decimal;
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+ol li {
+    /* Espacio entre cada elemento de la lista de respuestas */
+    margin-bottom: 8px;
+    color: #555;
+}
+
+a {
+    /* Estilo del enlace "Volver a empezar" */
+    display: block; /* Para que ocupe todo el ancho y se vea centrado mejor */
+    text-align: center;
+    color: #007bff;
+    text-decoration: none; /* Quitamos el subrayado por defecto */
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    margin-top: 20px;
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+a:hover {
+    background-color: #007bff;
+    color: white;
+}
