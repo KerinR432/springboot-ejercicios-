@@ -2,9 +2,21 @@ package BBDD.carritoDeLaCompra.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
+//* -------------------------- OBJETO -------------------------
+/**
+ * Creamos lo que es una entidad que sera nuestra base de datos o sera ese puente hacia ella
+ * creamos 2 constructures, uno que le pasamos algo por parametro o otro que es vacio y nos ayudara
+ * con la interfaz.
+ * Tambíen aqui declararemos lo que sera la varible que sera el Id o esa clave de indetificación
+ * tenemos varias variables privadas
+ * @param nombre que es el 'id' ejemplo('patatas').
+ * @param precio ejemplo(12€).
+ * @param stock ejemplo(100) unidades.
+ * en generar creamos getters y setters de todo, asi como un toString para poder depurar si queremos.
+ * */
 @Entity
 public class ProductoAlmacen {
+    //varible importante, es la cual usaremos para poder refererir a los demas datos
     @Id
     protected String nombre;
     protected double precio;
