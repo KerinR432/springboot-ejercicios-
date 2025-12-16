@@ -3,21 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/personaje1.css}">
     <title>Creador de Personaje: Nombre</title>
 </head>
 <body>
-<form action="#" th:action="@{/}" method="post" th:object="${historia}">
-    <table>
-        <legend>NOMBRE DEL PERSONAJE
+
+<form th:action="@{/}" method="post" th:object="${historia}">
+
+    <fieldset>
+        <legend>Nombre del personaje</legend>
+
+        <table>
+            <tbody>
             <tr>
-                <td><input type="text" th:field="*{nombre}"></td>
-                <td th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error no hay nombre</td>
+                <td>
+                    <label for="nombre">Nombre:</label>
+                </td>
+                <td>
+                    <input type="text" id="nombre" th:field="*{nombre}">
+                </td>
+                <td th:if="${#fields.hasErrors('nombre')}"
+                    th:errors="*{nombre}">
+                    Error: nombre obligatorio
+                </td>
             </tr>
-        </legend>
-    </table>
-        <td><button type="submit" name="op" value="1">Enviar</button></td>
-    </tr>
+
+            <tr>
+                <td colspan="3">
+                    <button type="submit" name="op" value="+1">
+                        Enviar
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </fieldset>
 
 </form>
+
 </body>
 </html>

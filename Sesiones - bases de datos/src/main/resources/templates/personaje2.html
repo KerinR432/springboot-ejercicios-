@@ -1,47 +1,35 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Creador de Personaje: Rol</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/personaje2.css}">
+    <title>Rol del Personaje</title>
 </head>
 <body>
 <form th:action="@{/}" method="post" th:object="${historia}">
+
     <input type="hidden" th:field="*{nombre}" />
+    <input type="hidden" th:field="*{estado}" />
+
     <fieldset>
-        <legend>ROL</legend>
+        <legend>Selecciona un rol</legend>
 
-        <label>
-            <input type="radio" th:field="*{rol}" value="Berserk" /> Berserk
-        </label><br />
-
-        <label>
-            <input type="radio" th:field="*{rol}" value="Tanque" /> Tanque
-        </label><br />
-
-        <label>
-            <input type="radio" th:field="*{rol}" value="Arquero" /> Arquero
-        </label><br />
-
-        <label>
-            <input type="radio" th:field="*{rol}" value="Rogue" /> Rogue
-        </label><br />
-
-        <label>
-            <input type="radio" th:field="*{rol}" value="Sanador" /> Sanador
-        </label><br />
-
-        <label>
-            <input type="radio" th:field="*{rol}" value="Necromance" /> Necromance
-        </label><br />
-
-        <label>
-            <input type="radio" th:field="*{rol}" value="Clerigo" /> Clerigo
-        </label>
+        <label><input type="radio" th:field="*{rol}" value="Berserk"/> Berserk</label><br/>
+        <label><input type="radio" th:field="*{rol}" value="Tanque"/> Tanque</label><br/>
+        <label><input type="radio" th:field="*{rol}" value="Arquero"/> Arquero</label><br/>
+        <label><input type="radio" th:field="*{rol}" value="Rogue"/> Rogue</label><br/>
+        <label><input type="radio" th:field="*{rol}" value="Sanador"/> Sanador</label><br/>
+        <label><input type="radio" th:field="*{rol}" value="Necromance"/> Necromance</label><br/>
+        <label><input type="radio" th:field="*{rol}" value="Clerigo"/> Clerigo</label><br/>
+        <label><input type="radio" th:field="*{rol}" value="Caballero"/> Caballero</label><br/>
+        <div th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}">
+            Debes seleccionar un rol
+        </div>
     </fieldset>
 
     <button type="submit" name="op" value="1">Enviar</button>
     <button type="submit" name="op" value="-1">Volver</button>
+
 </form>
 </body>
 </html>

@@ -1,22 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Era hace una ves</title>
-</head>
-<body>
-<h1>DATOS DEL PERSONAJE</h1>
-<ol>
-    <li th:each="Historia : ${historia.heroe}" th:text="${Historia}"></li>
-</ol>
-<hr>
-<h2>¡TU HISTORIA!</h2>
-<span>¡Oh gran caballero de ceniza</span> <b th:text="${historia.nombre}">!</b><br>
-<span>Usted ahora renacera como un </span><b th:text="${historia.rol}"></bth:text></b><br>
-<span>Pero no va ir solo o sin nada. Usted eligio los siguientes articulos que lo ayudaran</span>
-<br><b th:text="${historia.objetos}"></b><br>
-<span>Ahora si, poderoso y gran caballero, que los Dioses te guarden y que conquistas el mundo.</span>
+    <!doctype html>
+    <html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/resultado.css}">
+        <title>Era hace una vez</title>
+    </head>
+    <body>
 
-</body>
-</html>
+    <h1>DATOS DEL PERSONAJE</h1>
+    <ol>
+        <li th:each="item : ${historia.heroe}" th:text="${item}"></li>
+    </ol>
+    <hr>
+
+    <h2>¡TU HISTORIA!</h2>
+    <p>¡Oh gran caballero de ceniza <b th:text="${historia.nombre}"></b>!
+        Usted ahora renacerá como un <b th:text="${historia.rol}"></b>.
+    </p>
+    <p>Pero no va a ir solo o sin nada. Usted eligió los siguientes artículos que lo ayudarán:</p>
+    <ul>
+        <li th:each="obj : ${historia.objetos}" th:text="${obj}"></li>
+    </ul>
+    <p>Ahora sí, poderoso y gran caballero, que los Dioses te guarden y que conquistes el mundo.</p>
+
+    </body>
+    </html>

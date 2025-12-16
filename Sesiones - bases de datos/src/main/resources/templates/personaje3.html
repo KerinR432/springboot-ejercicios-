@@ -1,34 +1,45 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Creador de Personaje: Articulos</title>
+    <link rel="stylesheet" th:href="@{/css/personaje3.css}">
+    <title>Creador de Personaje: Artículos</title>
 </head>
 <body>
-<form action="#" th:action="@{/}" method="post" th:object="${historia}">
-    <table>
-        <input type="hidden" th:field="*{nombre}" />
-        <input type="hidden" th:field="*{rol}" />
-        <legend>ARTICULOS</legend>
-        <ul>
-            <li><input type="checkbox" th:field="*{objetos}" value="Anillo">Anillo de Resitencia</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="monedas">Monedas</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="Piedra de afilar">Piedra de afilar</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="invocación">invocación</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="Flauta">Flauta</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="Aguila del regreso">Aguila del regreso</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="Infernales">Llamas Infernales</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="Anillo de Fe">Anillo de Fe</li>
-            <li><input type="checkbox" th:field="*{objetos}" value="Escudo Real">Escudo Real</li>
-        </ul>
-    </table>
-    <tr>
-        <td><button type="submit" name="op" value="1">enviar</button></td>
-        <button type="submit" name="op" value="-1">Volver</button>
-    </tr>
 
+<form th:action="@{/}" method="post" th:object="${historia}">
+
+    <input type="hidden" th:field="*{nombre}" />
+    <input type="hidden" th:field="*{rol}" />
+    <input type="hidden" th:field="*{estado}" />
+
+    <fieldset>
+        <legend>Artículos</legend>
+
+        <ul>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Anillo"> Anillo de Resistencia</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Monedas"> Monedas</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Piedra de afilar"> Piedra de afilar</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Invocación"> Invocación</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Flauta"> Flauta</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Águila del regreso"> Águila del regreso</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Llamas Infernales"> Llamas Infernales</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Anillo de Fe"> Anillo de Fe</label></li>
+            <li><label><input type="checkbox" th:field="*{objetos}" value="Escudo Real"> Escudo Real</label></li>
+        </ul>
+
+        <div th:if="${#fields.hasErrors('objetos')}"
+             th:errors="*{objetos}">
+            Error: debes seleccionar al menos un objeto
+        </div>
+
+    </fieldset>
+
+    <button type="submit" name="op" value="1">Enviar</button>
+    <button type="submit" name="op" value="-1">Volver</button>
 
 </form>
+
 </body>
 </html>
