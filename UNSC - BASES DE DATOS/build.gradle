@@ -25,6 +25,22 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// El motor: Spring Data JPA (incluye Hibernate y HikariCP)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// El cerebro: Driver de la base de datos (elige solo uno según tu caso)
+	// Para PostgreSQL (Mi recomendación personal por su manejo de JSONB y tipos complejos)
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// O si prefieres MySQL (Clásico, aunque algo estancado comparado con Postgres)
+	// runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// O H2 para desarrollo rápido y tests (Corre en memoria, no requiere instalación)
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc' // Solo si te obligan a usar SQL Server
+	testImplementation 'com.h2database:h2'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
