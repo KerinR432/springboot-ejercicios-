@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface RepositorioPelicula extends CrudRepository<Pelicula, Long> {
     boolean existsByNombre(String nombre);
     boolean existsByDirector(String director);
+
 }

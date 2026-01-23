@@ -2,6 +2,8 @@ package com.API.PrimeraAPIREST.Controller;
 
 import com.API.PrimeraAPIREST.Entities.Pelicula;
 import com.API.PrimeraAPIREST.Services.ServicioPelicula;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,18 +18,24 @@ public class ControladorPelicula {
     }
 
     @GetMapping()
-    public List<Pelicula> listarTodo() {
-        return servicioPelicula.dameTodo();
+    public ResponseEntity<List<Pelicula>> listarTodo() {
+        List<Pelicula> peliculas = servicioPelicula.dameTodo();
+        return ResponseEntity.ok(peliculas);
     }
 
     @GetMapping("/{id}")
-    public Pelicula listarUnaPeliculaPorID(@PathVariable(name="id") long id) {
-        return servicioPelicula.dameUnaPeliculaPorID(id).orElse(null);
+    public ResponseEntity<Pelicula> listarUnaPeliculaPorID(@PathVariable(name="id") long id) {
+        Pelicula peliculaMostrarId = servicioPelicula.dameUnaPeliculaPorID(id).orElse(null);
+        return ResponseEntity.ok(peliculaMostrarId);
     }
 
     @PostMapping()
-    public Pelicula crearUnaPelicula(@RequestBody Pelicula pelicula) {
-        return servicioPelicula.guardar(pelicula);
+    public ResponseEntity<?> crearUnaPelicula(@RequestBody Pelicula pelicula, BindingResult result) {
+        Pelicula peliculaGuarda = servicioPelicula.guardar(pelicula);
+        if (peliculaGuarda == null) {
+            return ResponseEntity.badRequest().body(result.getAllErrors());
+        }
+        return ResponseEntity.ok(peliculaGuarda);
     }
 
     @DeleteMapping("/{id}")
@@ -39,7 +47,8 @@ public class ControladorPelicula {
     }
 
     @PutMapping("/{id}")
-    public Pelicula actualizarDatosPelicula(@PathVariable(name="id") long id, @RequestBody Pelicula pelicula) {
-        return servicioPelicula.actualizarPelicula(id, pelicula);
+    public ResponseEntity<Pelicula> actualizarDatosPelicula(@PathVariable(name="id") long id, @RequestBody Pelicula pelicula) {
+        Pelicula peliculaActualizada = servicioPelicula.actualizarPelicula(id, pelicula);
+        return ResponseEntity.ok(peliculaActualizada);
     }
 }
