@@ -39,11 +39,12 @@ public class ControladorPelicula {
     }
 
     @DeleteMapping("/{id}")
-    public void borrarPelicula(@PathVariable(name="id") Long id) {
-        Optional<Pelicula> peliculaOptional = servicioPelicula.dameUnaPeliculaPorID(id);
-        if(peliculaOptional.isPresent()){
-            servicioPelicula.borrar(peliculaOptional.get());
+    public ResponseEntity<?> borrarPelicula(@PathVariable(name="id") Long id,BindingResult result) {
+        Pelicula peliculaOptional = servicioPelicula.dameUnaPeliculaPorID(id).orElse(null);
+        if(peliculaOptional.getId() == id){
+            return servicioPelicula.borrar(peliculaOptional.get());
         }
+        return ResponseEntity.badRequest().body(result.getAllErrors());
     }
 
     @PutMapping("/{id}")
