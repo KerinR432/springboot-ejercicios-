@@ -23,14 +23,16 @@ public class FormsController {
 	@PostMapping("/")
 	String procesaEtapaX(@RequestParam(name = "aficciones", required = false) String aficciones,
                          @RequestParam(name = "nombre", required = false) String nombre,
-                         @RequestParam(name = "signo", required = false) String signo, Model modelo, HttpSession sesion) {
+                         @RequestParam(name = "signo", required = false) String signo,
+						 @RequestParam (name = "numEtapa") Integer numEtapa,
+						 Model modelo, HttpSession sesion) {
 
 
         modelo.addAttribute("signos", SIGNOS);
         modelo.addAttribute("aficciones", AFICCIONES);
 
-       Integer numEtapa = (Integer) sesion.getAttribute("numEtapa");
-        System.out.printf("Etapa"+numEtapa);
+       //Integer numEtapa = (Integer) sesion.getAttribute("numEtapa");
+        System.out.printf(""+numEtapa);
 		if (numEtapa == null) {
             sesion.setAttribute("numEtapa",1);
             return "etapa1";
@@ -77,7 +79,7 @@ public class FormsController {
             respuestas.add(nombre);
             respuestas.add(SIGNOS[Integer.parseInt(signo)]);
             respuestas.add(aficciones);
-            aficciones = (String)sesion.getAttribute("aficiones");
+            aficciones = (String)sesion.getAttribute("aficciones");
 			modelo.addAttribute("respuestas", respuestas);
 		}
 
@@ -86,7 +88,7 @@ public class FormsController {
 
 	@GetMapping("/")
 	String getEtapa0(HttpSession session, Model modelo) {
-		session.setAttribute("etapa",1);
+		session.setAttribute("numEtapa",1);
         modelo.addAttribute("numEtapa",1);
         return "etapa1";
 	}

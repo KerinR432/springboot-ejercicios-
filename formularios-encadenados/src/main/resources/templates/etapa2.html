@@ -1,35 +1,198 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-        <title>MiniQuizz etapa 2</title>
-        <link rel="stylesheet" th:href="@{/style.css}"/>
-    </head>
+<head>
+	<meta charset="UTF-8">
+	<title>TERMINAL_DE_DATOS // CLASIFICACIÓN_ASTRAL</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        :root {
+            --halo-gold: #ffb400;
+            --halo-gold-dim: rgba(255, 180, 0, 0.2);
+            --halo-bg: #050505;
+            --glow: 0 0 15px rgba(255, 180, 0, 0.5);
+        }
+
+        body {
+            background-color: var(--halo-bg);
+            color: var(--halo-gold);
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        /* Efecto de ruido estático sutil */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .terminal-frame {
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid var(--halo-gold-dim);
+            border-left: 5px solid var(--halo-gold);
+            position: relative;
+            box-shadow: var(--glow), inset 0 0 30px rgba(0,0,0,1);
+            /* Geometría Forerunner: Esquinas sesgadas */
+            clip-path: polygon(0% 15%, 5% 0%, 100% 0%, 100% 85%, 95% 100%, 0% 100%);
+        }
+
+        .terminal-frame::after {
+            content: "DATA_NODE_SEC_02";
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.6rem;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--halo-gold-dim);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            text-shadow: var(--glow);
+        }
+
+        .error-msg {
+            background: rgba(255, 0, 0, 0.15);
+            color: #ff4444;
+            padding: 10px;
+            border: 1px solid #ff4444;
+            margin-bottom: 25px;
+            font-size: 0.8rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        .select-wrapper {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        select {
+            width: 100%;
+            background: #000;
+            color: var(--halo-gold);
+            border: 1px solid var(--halo-gold);
+            padding: 15px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            outline: none;
+            cursor: pointer;
+            appearance: none; /* Elimina flecha nativa */
+            transition: 0.3s;
+        }
+
+        select:focus {
+            box-shadow: var(--glow);
+            background: var(--halo-gold-dim);
+        }
+
+        /* Flecha personalizada estilo HUD */
+        .select-wrapper::after {
+            content: "▼";
+            position: absolute;
+            right: 20px;
+            top: 45px;
+            pointer-events: none;
+        }
+
+        .nav-button {
+            background: transparent;
+            color: var(--halo-gold);
+            border: 2px solid var(--halo-gold);
+            padding: 12px 35px;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            float: right;
+            transition: all 0.4s;
+            clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%);
+        }
+
+        .nav-button:hover {
+            background: var(--halo-gold);
+            color: #000;
+            box-shadow: 0 0 20px var(--halo-gold);
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* Líneas de escaneo en movimiento */
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 180, 0, 0.1);
+            top: 0;
+            animation: scan 8s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes scan {
+            from { top: 0; }
+            to { top: 100%; }
+        }
+	</style>
+</head>
 <body>
-<form method="post" th:action="@{/}">
-	<p>
-		<p th:text="${errores}" />
-	<label for="signo">Signo:</label>
-	<select name="signo">
-		<option th:each="signo,indice : ${signos}" th:value="${indice.index}" th:text="${signo}" />
-		<!--
-		<option value=0></option>
-		<option value=1>Aries</option>
-		<option value=2>Tauro</option>
-		<option value=3>Géminis</option>
-		<option value=4>Cáncer</option>
-		<option value=5>Leo</option>
-		<option value=6>Virgo</option>
-		<option value=7>Libra</option>
-		<option value=8>Escorpio</option>
-		<option value=9>Sagitario</option>
-		<option value=10>Capricornio</option>
-		<option value=11>Acuario</option>
-		<option value=12>Piscis</option>
-		-->
-	</select>
-	</p>
-   <input type="submit" name="enviar" value="Siguiente" />
-   </span>
-   </form>
+
+<div class="terminal-frame">
+	<div class="scan-line"></div>
+
+	<h1>[ETAPA_02]: ALINEACIÓN_MATRICIAL</h1>
+
+	<form method="post" th:action="@{/}">
+		<div th:if="${errores}" class="error-msg">
+			CRITICAL_ERROR: <span th:text="${errores}"></span>
+		</div>
+
+		<div class="select-wrapper">
+			<label for="signo">> SELECCIONE VECTOR DE ORIGEN (SIGNO):</label>
+			<select name="signo" id="signo">
+				<option th:each="s, iter : ${signos}"
+						th:value="${iter.index}"
+						th:text="${s}"
+						th:selected="${iter.index == signo}">
+				</option>
+			</select>
+		</div>
+
+		<input type="hidden" name="numEtapa" value="2" />
+
+		<div style="margin-top: 60px; overflow: hidden;">
+			<button type="submit" name="enviar" class="nav-button">
+				ENVIAR_SEÑAL >>
+			</button>
+		</div>
+	</form>
+</div>
+
 </body>
 </html>
