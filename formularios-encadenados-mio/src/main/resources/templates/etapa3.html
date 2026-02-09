@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>TERMINAL_ARCHIVE // INDEX_PROTOCOL_03</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        :root {
+            --halo-purple: #b24fff;
+            --halo-bg: #050208;
+            --halo-white: #e0d5ff;
+            --glitch-red: rgba(255, 0, 80, 0.4);
+            --glitch-blue: rgba(0, 255, 255, 0.4);
+        }
+
+        body {
+            background-color: var(--halo-bg);
+            color: var(--halo-purple);
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        /* Ruido estático y scanlines */
+        body::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .terminal-shell {
+            width: 80%;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(15, 5, 25, 0.8);
+            border: 1px solid var(--halo-purple);
+            box-shadow: 0 0 20px rgba(178, 79, 255, 0.2);
+            position: relative;
+            /* Geometría asimétrica estilo Terminal */
+            clip-path: polygon(0 0, 95% 0, 100% 10%, 100% 100%, 5% 100%, 0 90%);
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            border-bottom: 2px solid var(--halo-purple);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .error-box {
+            color: #ff4a4a;
+            border: 1px dashed #ff4a4a;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            text-align: center;
+            background: rgba(255, 74, 74, 0.1);
+        }
+
+        ol {
+            list-style: none;
+            padding: 0;
+            max-height: 250px;
+            overflow-y: auto;
+            border-right: 1px solid var(--halo-purple);
+        }
+
+        /* Estilo Checkbox "Halo" */
+        li {
+            margin-bottom: 12px;
+            padding: 10px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            border: 1px solid transparent;
+        }
+
+        li:hover {
+            background: rgba(178, 79, 255, 0.1);
+            border: 1px solid var(--halo-purple);
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--halo-purple);
+            margin-right: 15px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: var(--halo-purple);
+            box-shadow: 0 0 10px var(--halo-purple);
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: "L";
+            transform: scaleX(-1) rotate(-45deg);
+            position: absolute;
+            color: var(--halo-bg);
+            font-weight: bold;
+            left: 3px;
+            top: -2px;
+        }
+
+        .submit-container {
+            margin-top: 40px;
+            text-align: right;
+        }
+
+        /* Botón con efecto Glitch */
+        button {
+            background: transparent;
+            color: var(--halo-white);
+            border: 1px solid var(--halo-white);
+            padding: 12px 30px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: var(--halo-white);
+            color: var(--halo-bg);
+            box-shadow: 0 0 20px var(--halo-white);
+        }
+
+        /* Simulación de Glitch en hover */
+        button:hover::before {
+            content: "SIGUIENTE";
+            position: absolute;
+            top: 0; left: -2px;
+            color: var(--glitch-red);
+            z-index: -1;
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Scrollbar personalizada estilo terminal */
+        ol::-webkit-scrollbar { width: 5px; }
+        ol::-webkit-scrollbar-thumb { background: var(--halo-purple); }
+	</style>
+</head>
+<body>
+
+<main class="terminal-shell">
+	<h2>
+		<span>INDEX_AFICIONES</span>
+		<span style="font-size: 0.6rem; opacity: 0.5;">v.7.09.2</span>
+	</h2>
+
+	<form method="post" th:action="@{/}">
+		<div th:if="${errores != null}" class="error-box">
+			[SYS_ERR]: <span th:text="${errores}"></span>
+		</div>
+
+		<label style="font-size: 0.8rem; opacity: 0.7;">> SELECCIONE ATRIBUTOS DE CONDUCTA:</label>
+		<ol>
+			<li th:each="aficcion : ${aficciones}">
+				<input type="checkbox"
+					   name="aficciones"
+					   th:value="${aficcion}"
+					   th:id="${'aficcion_' + aficcion}" />
+				<label th:for="${'aficcion_' + aficcion}" th:text="${aficcion}"></label>
+			</li>
+		</ol>
+
+		<input type="hidden" name="numEtapa" th:value="${numEtapa != null ? numEtapa : 3}" />
+		<input type="hidden" name="nombre" th:
