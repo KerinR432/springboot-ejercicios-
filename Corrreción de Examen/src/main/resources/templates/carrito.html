@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<title>Cesta de la compra de fruta y verdura</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Cesta de la compra de fruta y verdura:</h1>
+		<form action="/Mostrar" method="post"
+			<p>
+				<label>Producto1:</label>
+				<select>
+					<option></option>
+					<option th:each="producto: ${productos}">
+						<span th:text="${producto}" name="producto"></span>
+					</option>
+				</select>
+				<input type="number" name="cantidad"/>
+			</p>
+			<p><label>Añadir perejil</label><input type="checkbox" />
+			</p>	
+				
+			<input type="submit" value="Actualizar" />
+			</p>
+		</form>
+	
+<!--		<h2>Resumen compra:</h2>-->
+<!--		<span th:if="${correcto == true}">-->
+<!--			<h1>AQUI ESTA EL RESUMEN DE TU COMPRA</h1>-->
+<!--			<p th:text="${productoNombre}"></p>-->
+<!--			<p th:text="{cantidadProducto}"></p>-->
+<!--		</span>-->
+	</body>
+</html>
