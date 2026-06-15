@@ -1,0 +1,433 @@
+Lo que has subido parece ser el enunciado completo de una práctica de **APIs REST (UD6)**. Es bastante más grande que las anteriores porque cubre desde JSON Server hasta Spring Boot, APIs públicas, `@RestController`, `ResponseEntity` y teoría RESTful.
+
+Si mañana te lo preguntan en examen o tienes que entregarlo, te recomiendo organizarlo así:
+
+# Estructura recomendada del proyecto
+
+## Temática sencilla
+
+No compliques la entidad.
+
+Por ejemplo:
+
+```java
+Pelicula
+```
+
+con:
+
+```java
+id
+titulo
+director
+anio
+```
+
+o
+
+```java
+Videojuego
+```
+
+con:
+
+```java
+id
+nombre
+genero
+plataforma
+```
+
+---
+
+# Apartado 1: JSON Server
+
+Crear:
+
+```json
+{
+  "peliculas": [
+    {
+      "id": 1,
+      "titulo": "Alien",
+      "director": "Ridley Scott"
+    },
+    {
+      "id": 2,
+      "titulo": "Blade Runner",
+      "director": "Ridley Scott"
+    }
+  ]
+}
+```
+
+Lanzar:
+
+```bash
+json-server --watch db.json
+```
+
+---
+
+## Tabla de pruebas
+
+| Petición           | Código esperado         |
+| ------------------ | ----------------------- |
+| GET /peliculas     | 200                     |
+| GET /peliculas/1   | 200                     |
+| GET /peliculas/999 | 404                     |
+| POST nueva         | 201                     |
+| POST existente     | normalmente 201         |
+| DELETE existente   | 200                     |
+| DELETE inexistente | 404 o 200 según versión |
+| PUT existente      | 200                     |
+| PUT inexistente    | 404                     |
+| PATCH existente    | 200                     |
+
+---
+
+# Apartado 2: Spring Data REST
+
+Dependencias:
+
+```gradle
+implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+runtimeOnly 'com.h2database:h2'
+```
+
+---
+
+## Entidad
+
+```java
+@Entity
+public class Pelicula {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String titulo;
+    private String director;
+}
+```
+
+---
+
+## Repository
+
+```java
+@RepositoryRestResource
+public interface PeliculaRepository
+        extends JpaRepository<Pelicula, Long> {
+
+}
+```
+
+---
+
+## import.sql
+
+```sql
+INSERT INTO pelicula(titulo,director)
+VALUES('Alien','Ridley Scott');
+
+INSERT INTO pelicula(titulo,director)
+VALUES('Blade Runner','Ridley Scott');
+```
+
+---
+
+## Activar consola H2
+
+application.properties
+
+```properties
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+```
+
+---
+
+# Comparación JSON Server vs Spring Data REST
+
+Lo que suele pedir el profesor:
+
+| Operación       | JSON Server | Rest Repository |
+| --------------- | ----------- | --------------- |
+| GET OK          | 200         | 200             |
+| GET inexistente | 404         | 404             |
+| POST            | 201         | 201             |
+| DELETE          | variable    | 204             |
+| PUT             | 200         | 200             |
+| PATCH           | 200         | 200             |
+
+---
+
+# Apartado 3: API Pública
+
+La más sencilla:
+
+[Rick and Morty API](https://rickandmortyapi.com?utm_source=chatgpt.com)
+
+Prueba:
+
+```http
+GET
+/api/character/1
+```
+
+Respuesta:
+
+```json
+{
+  "id":1,
+  "name":"Rick Sanchez"
+}
+```
+
+---
+
+## Diferencias respecto a las anteriores
+
+### APIs propias
+
+Permiten:
+
+```text
+GET
+POST
+PUT
+PATCH
+DELETE
+```
+
+---
+
+### API pública
+
+Normalmente:
+
+```text
+Solo GET
+```
+
+o POST muy limitado.
+
+---
+
+# Apartado 4: RestController
+
+Estructura:
+
+```text
+controller
+service
+repository
+entity
+```
+
+---
+
+## Controlador
+
+```java
+@RestController
+@RequestMapping("/peliculas")
+public class PeliculaController {
+}
+```
+
+---
+
+## GET todos
+
+```java
+@GetMapping
+public List<Pelicula> getAll() {
+
+    return service.findAll();
+}
+```
+
+---
+
+## GET uno
+
+```java
+@GetMapping("/{id}")
+public Pelicula getById(
+        @PathVariable Long id) {
+
+    return service.findById(id);
+}
+```
+
+---
+
+## POST
+
+```java
+@PostMapping
+public Pelicula save(
+        @RequestBody Pelicula pelicula) {
+
+    return service.save(pelicula);
+}
+```
+
+---
+
+# Apartado 4.2 ResponseEntity
+
+Este suele ser el que da la nota alta.
+
+---
+
+## GET
+
+```java
+@GetMapping("/{id}")
+public ResponseEntity<Pelicula> getById(
+        @PathVariable Long id) {
+
+    Optional<Pelicula> p =
+            repository.findById(id);
+
+    if (p.isPresent()) {
+
+        return ResponseEntity.ok(p.get());
+    }
+
+    return ResponseEntity.notFound().build();
+}
+```
+
+---
+
+## POST
+
+```java
+@PostMapping
+public ResponseEntity<Pelicula> save(
+        @RequestBody Pelicula pelicula) {
+
+    Pelicula nueva =
+            repository.save(pelicula);
+
+    return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(nueva);
+}
+```
+
+---
+
+## DELETE
+
+```java
+@DeleteMapping("/{id}")
+public ResponseEntity<Void> delete(
+        @PathVariable Long id) {
+
+    if (!repository.existsById(id)) {
+
+        return ResponseEntity.notFound().build();
+    }
+
+    repository.deleteById(id);
+
+    return ResponseEntity.noContent().build();
+}
+```
+
+---
+
+# Apartado 5: Resumen RESTful
+
+Esto suele ser lo que diferencia el Excelente.
+
+## ¿Qué es una API RESTful?
+
+Una API RESTful es una interfaz que permite la comunicación entre aplicaciones mediante HTTP siguiendo principios REST.
+
+Utiliza recursos identificados mediante URLs.
+
+Ejemplo:
+
+```http
+GET /peliculas
+```
+
+Obtiene todas las películas.
+
+```http
+GET /peliculas/1
+```
+
+Obtiene una película.
+
+```http
+POST /peliculas
+```
+
+Crea una película.
+
+```http
+PUT /peliculas/1
+```
+
+Actualiza completamente.
+
+```http
+PATCH /peliculas/1
+```
+
+Actualiza parcialmente.
+
+```http
+DELETE /peliculas/1
+```
+
+Elimina.
+
+---
+
+## HATEOAS
+
+Significa:
+
+```text
+Hypermedia As The Engine Of Application State
+```
+
+La respuesta incluye enlaces relacionados.
+
+Ejemplo:
+
+```json
+{
+  "id":1,
+  "titulo":"Alien",
+  "_links":{
+      "self":{
+         "href":"/peliculas/1"
+      }
+  }
+}
+```
+
+Así el cliente descubre automáticamente qué operaciones puede realizar.
+
+---
+
+## Conclusión para el PDF
+
+* JSON Server permite crear una API REST funcional rápidamente.
+* Spring Data REST automatiza gran parte de la creación del API.
+* `@RestController` proporciona control total sobre las respuestas.
+* `ResponseEntity` permite devolver códigos HTTP adecuados.
+* Las APIs públicas suelen ser más restrictivas que las desarrolladas localmente.
+* HATEOAS mejora la navegabilidad y el desacoplamiento entre cliente y servidor.
+* REST se basa en recursos, URLs y métodos HTTP estandarizados.
