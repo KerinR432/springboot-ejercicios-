@@ -1,0 +1,658 @@
+# Preparación para examen de Spring Boot
+
+## User
+
+Tengo un examen de Springboot para mañana, en ordenador y con una dificultad alta. Quisiera aprender y estudiar muy bien, con datos importante y ideas importante y sencillas de aprender. Para poder realizar los ejericicos de aqui aunque sean multipiclados x20
+
+## Assistant
+
+Voy a revisar tu repositorio de ejercicios Spring Boot para armar una guía de estudio alineada con lo que realmente practicas aquí.
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-","globPattern":"**/*"}
+```
+
+### Tool Semantic Search Full
+
+```
+{}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"@(RestController|Controller|Service|Repository|Entity|Autowired|GetMapping|PostMapping|RequestMapping)","glob":"**/*.java","outputMode":"files_with_matches","caseInsensitive":false,"headLimit":40,"multiline":false,"toolCallId":"tool_f948e550-c3e3-4954-83f7-a7fd1d75fd9","offset":0}
+```
+
+### Tool Glob File Search
+
+```
+{"targetDirectory":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-","globPattern":"**/README*"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\ExamenUD3\\src\\main\\java\\goya\\daw2\\dwes\\ud3\\Ejercicio2.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\AltoConsejo\\src\\main\\java\\Secreto\\AltoConsejo\\WebSecurityConfig.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\PrimeraAPIREST\\src\\main\\java\\com\\API\\PrimeraAPIREST\\Controller\\ControladorPelicula.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\PrimeraAPIREST\\src\\main\\java\\com\\API\\PrimeraAPIREST\\Entities\\Pelicula.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\carritoDeLaCompra\\src\\main\\java\\BBDD\\carritoDeLaCompra\\ControladorTienda.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\Sesiones\\src\\main\\java\\com\\R3_UD2\\ProyectoR3UD2\\formuarioController.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\formularios-encadenados\\src\\main\\java\\goya\\daw2\\pruebas_plantillas\\FormsController.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\demo\\src\\main\\java\\com\\example\\demo\\controladorWebCRUD.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\BobEsponjaApiRest\\src\\main\\java\\ies\\goya\\examen\\ud5\\ControladorPersonaje.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\PrimeraAPIREST\\src\\main\\java\\com\\API\\PrimeraAPIREST\\Repository\\RepositorioPelicula.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\PrimeraAPIREST\\src\\main\\java\\com\\API\\PrimeraAPIREST\\Services\\ServicioPelicula.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\ExamenUD3\\src\\main\\java\\goya\\daw2\\dwes\\ud3\\Ejercicio1.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\UNSC\\src\\test\\java\\com\\R3_UD2\\ProyectoR3UD2\\ControllerLoginTest.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\carritoDeLaCompra\\src\\main\\resources\\application.properties"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\BobEsponjaApiRest\\src\\main\\java\\ies\\goya\\examen\\ud5\\PersonajeServicio.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\UNSC\\src\\main\\java\\com\\R3_UD2\\ProyectoR3UD2\\ControllerLogin.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\GrasaCorporalObejeto\\src\\main\\java\\com\\example\\GrasaCorporalObejeto\\GrasaCorporal.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\Sesiones - bases de datos\\src\\main\\java\\com\\R3_UD2\\ProyectoR3UD2\\PuntuacionPartida.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\D1-UD6\\src\\main\\java\\ConectarApiRest\\D1_UD6\\ControllablePokemon.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\ExamenUD3\\src\\main\\resources\\templates\\login.html"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\Corrreción de Examen\\src\\main\\java\\com\\correcion\\Corrrecion\\de\\Examen\\ControladorCarrito.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\GrasaCorporalObejeto\\src\\main\\java\\com\\example\\GrasaCorporalObejeto\\Persona.java"}
+```
+
+### Tool Read File V2
+
+```
+{"path":"C:\\Users\\kerin\\Desktop\\DAW2\\springboot-ejercicios-\\PrimeraAPIREST\\src\\main\\resources\\import.sql"}
+```
+
+### Tool Ripgrep Raw Search
+
+```
+{"pattern":"@Valid|@NotNull|@Size|@Min|@Max","glob":"**/*.java","caseInsensitive":false,"headLimit":20,"multiline":false,"toolCallId":"tool_6e0605f2-d58c-4690-a013-09c55b9bd72","offset":0}
+```
+
+## Assistant
+
+# Guía de estudio Spring Boot — examen mañana
+
+He revisado tus proyectos (`ExamenUD3`, `UNSC`, `PrimeraAPIREST`, `carritoDeLaCompra`, `formularios-encadenados`, `GrasaCorporal`, `BobEsponjaApiRest`, etc.). El examen difícil suele combinar **varias capas a la vez**. Si dominas estos patrones, puedes escalar casi cualquier ejercicio.
+
+---
+
+## 1. Modelo mental (memorízalo en 30 segundos)
+
+```
+Petición HTTP → Controller → Service → Repository → BD
+                    ↓
+              Thymeleaf (HTML)  o  JSON (REST)
+```
+
+| Capa | Anotación | ¿Qué hace? |
+|------|-----------|------------|
+| **Controller** | `@Controller` / `@RestController` | Recibe la petición, devuelve vista o JSON |
+| **Service** | `@Service` | Lógica de negocio |
+| **Repository** | `@Repository` | Acceso a datos (BD) |
+| **Entity** | `@Entity` | Tabla de la BD |
+
+**Regla de oro:** el Controller no hace lógica compleja. Delega al Service.
+
+---
+
+## 2. `@Controller` vs `@RestController` (decisión rápida)
+
+| | `@Controller` | `@RestController` |
+|---|---------------|-------------------|
+| Devuelve | Nombre de plantilla HTML (`"login"`) | JSON directamente |
+| Usa | `Model`, Thymeleaf | `ResponseEntity`, `@RequestBody` |
+| Ejemplo tuyo | `Ejercicio1`, `UNSC`, `GrasaCorporal` | `PrimeraAPIREST`, `BobEsponjaApiRest` |
+
+```java
+// WEB (Thymeleaf)
+@Controller
+public class MiController {
+    @GetMapping("/")
+    public String inicio(Model modelo) {
+        modelo.addAttribute("usuarios", lista);
+        return "chats";  // → templates/chats.html
+    }
+}
+
+// REST (JSON)
+@RestController
+@RequestMapping("/personaje")
+public class MiRestController {
+    @GetMapping
+    public ResponseEntity<List<Personaje>> listar() {
+        return ResponseEntity.ok(servicio.findAll());
+    }
+}
+```
+
+---
+
+## 3. Anotaciones esenciales (tabla de examen)
+
+### En el Controller
+
+| Anotación | Para qué | Ejemplo |
+|-----------|----------|---------|
+| `@GetMapping` | Leer / mostrar formulario | `@GetMapping("/login")` |
+| `@PostMapping` | Enviar formulario / crear | `@PostMapping("/")` |
+| `@PutMapping` | Actualizar completo | `@PutMapping("/{id}")` |
+| `@DeleteMapping` | Borrar | `@DeleteMapping("/{id}")` |
+| `@PathVariable` | Dato en la URL | `/personaje/{id}` → `@PathVariable Long id` |
+| `@RequestParam` | Dato en query o form | `?usuario=Bob` → `@RequestParam String usuario` |
+| `@RequestBody` | JSON en el body (REST) | `@RequestBody Personaje p` |
+| `@Valid` | Activar validación | `@Valid Persona persona` |
+| `BindingResult` | Errores de validación | `if (bindingResult.hasErrors()) return "form"` |
+
+### Inyección de dependencias
+
+```java
+// ✅ CORRECTO (constructor) — lo que usas en tus proyectos
+public ControladorTienda(ServicioAlmacen servicio) {
+    this.servicio = servicio;
+}
+
+// ❌ Evitar en examen (field injection)
+@Autowired
+private ServicioAlmacen servicio;
+```
+
+Spring crea el objeto y lo inyecta solo porque el constructor pide ese tipo y está anotado con `@Service`.
+
+---
+
+## 4. Patrones que se repiten en TODOS tus ejercicios
+
+### A) Formulario GET → POST (GrasaCorporal, carrito, alumnos)
+
+```java
+@GetMapping("/")
+public String verFormulario() {
+    return "formulario";
+}
+
+@PostMapping("/")
+public String procesar(@Valid Persona persona, BindingResult result) {
+    if (result.hasErrors()) return "formulario";
+    // lógica...
+    return "resultado";
+}
+```
+
+### B) Parámetros opcionales (botones distintos en un form)
+
+```java
+@PostMapping("/alumno")
+public String procesar(
+    @RequestParam(required = false) String crear,
+    @RequestParam(required = false) String borrar) {
+    if (crear != null) repo.save(alumno);
+    if (borrar != null) repo.deleteById(alumno.getId());
+    return "alumno";
+}
+```
+
+### C) Map con todos los campos del form (carrito)
+
+```java
+@PostMapping("/")
+public String procesar(@RequestParam Map<String, String> campos) {
+    campos.remove("comprar");  // quitar el botón submit
+    // campos = { "producto1": "2", "producto2": "0", ... }
+}
+```
+
+### D) Formularios encadenados (etapas)
+
+Tres formas que ya tienes:
+
+1. **Contador de etapa** (`numEtapa` en `@RequestParam`) — `formularios-encadenados`
+2. **Sesión** (`HttpSession`) — `UNSC`, `Sesiones`
+3. **Cookies** — `FormsController` con `@CookieValue`
+
+```java
+// Sesión
+sesion.setAttribute("nombre", nombre);
+String n = (String) sesion.getAttribute("nombre");
+sesion.invalidate();  // cerrar sesión
+
+// Cookie
+Cookie c = new Cookie("cookieNombre", valor);
+c.setMaxAge(3600);
+response.addCookie(c);
+
+// Leer cookie
+@CookieValue(name = "cookieNombre", defaultValue = "") String nombre
+```
+
+### E) Redirecciones
+
+```java
+return "redirect:/login";     // 302 → nueva petición GET
+return "login";               // renderiza plantilla (misma petición)
+```
+
+Usa `redirect:` después de POST para evitar reenvío al refrescar (patrón PRG).
+
+---
+
+## 5. Thymeleaf — lo mínimo imprescindible
+
+```html
+<!-- Mostrar variable -->
+<p th:text="${usuario}"></p>
+<h1 th:text="|Hola ${nombre}|"></h1>
+
+<!-- Condicional -->
+<div th:if="${nombre}">Logueado</div>
+<div th:unless="${nombre}">No logueado</div>
+
+<!-- Bucle -->
+<tr th:each="u : ${usuarios}">
+    <td th:text="${u}"></td>
+</tr>
+
+<!-- Enlace con parámetro -->
+<a th:href="@{/chat(usuario=${u})}">Chat</a>
+
+<!-- Errores de validación -->
+<p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+```
+
+En el Controller: `modelo.addAttribute("usuarios", USUARIOS);`
+
+---
+
+## 6. Validación (GrasaCorporal, Sesiones)
+
+**En la clase POJO:**
+```java
+@NotNull
+@Size(min = 2, max = 30)
+private String nombre;
+
+@Min(18)
+private Integer edad;
+```
+
+**En el Controller:**
+```java
+@PostMapping("/")
+public String procesar(@Valid Persona persona, BindingResult result) {
+    if (result.hasErrors()) return "formulario";
+    // OK → calcular y mostrar resultado
+}
+```
+
+**Dependencia en `build.gradle`:**
+```gradle
+implementation 'org.springframework.boot:spring-boot-starter-validation'
+```
+
+---
+
+## 7. JPA + Repository (PrimeraAPIREST, carrito, BBDJPA)
+
+### Entity
+```java
+@Entity
+public class Pelicula {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    // getters y setters OBLIGATORIOS
+}
+```
+
+### Repository
+```java
+public interface RepositorioPelicula extends CrudRepository<Pelicula, Long> {
+    boolean existsByNombre(String nombre);  // Spring genera la query
+    List<Pelicula> findByDirector(String director);
+}
+```
+
+### Métodos útiles de `CrudRepository`
+| Método | Acción |
+|--------|--------|
+| `findAll()` | SELECT * |
+| `findById(id)` | SELECT WHERE id = ? → `Optional<T>` |
+| `save(entity)` | INSERT o UPDATE |
+| `deleteById(id)` | DELETE |
+| `existsById(id)` | ¿Existe? |
+
+### `application.properties` (MySQL)
+```properties
+spring.datasource.url=jdbc:mysql://localhost/dwes2
+spring.datasource.username=daw2
+spring.datasource.password=LaElipa
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+- `update` → crea/actualiza tablas sin borrar datos  
+- `create` → recrea tablas (pierdes datos)  
+- `import.sql` → datos iniciales al arrancar (H2/MySQL según config)
+
+---
+
+## 8. REST API + `ResponseEntity` (examen difícil)
+
+### CRUD completo (plantilla copiable)
+
+```java
+@RestController
+@RequestMapping("/api/personajes")
+public class PersonajeController {
+    private final PersonajeServicio servicio;
+
+    public PersonajeController(PersonajeServicio servicio) {
+        this.servicio = servicio;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Personaje>> listar() {
+        return ResponseEntity.ok(servicio.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Personaje> obtener(@PathVariable Long id) {
+        return servicio.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());  // 404
+    }
+
+    @PostMapping
+    public ResponseEntity<Personaje> crear(@RequestBody Personaje p) {
+        Personaje creado = servicio.save(p);
+        URI location = URI.create("/api/personajes/" + creado.getId());
+        return ResponseEntity.created(location).body(creado);  // 201
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Personaje> actualizar(@PathVariable Long id, @RequestBody Personaje p) {
+        if (!servicio.existsById(id))
+            return ResponseEntity.notFound().build();
+        p.setId(id);
+        return ResponseEntity.ok(servicio.save(p));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> borrar(@PathVariable Long id) {
+        if (!servicio.existsById(id))
+            return ResponseEntity.notFound().build();
+        servicio.deleteById(id);
+        return ResponseEntity.noContent().build();  // 204
+    }
+}
+```
+
+### Códigos HTTP que debes saber
+
+| Código | Significado | Cuándo |
+|--------|-------------|--------|
+| **200** OK | Éxito con body | GET, PUT |
+| **201** Created | Recurso creado | POST |
+| **204** No Content | Éxito sin body | DELETE |
+| **400** Bad Request | Datos inválidos | Validación fallida |
+| **404** Not Found | No existe | ID inexistente |
+| **302/303** | Redirección | Login OK, PRG |
+
+---
+
+## 9. Spring Security (ExamenUD3, AltoConsejo)
+
+### Configuración mínima
+```java
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig {
+
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/registro").permitAll()
+                .anyRequest().authenticated())
+            .formLogin(form -> form.loginPage("/login").permitAll())
+            .logout(logout -> logout.permitAll());
+        return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+```
+
+### BCrypt (Ejercicio2)
+```java
+BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+String hash = encoder.encode("password");           // crear hash
+boolean ok = encoder.matches("password", hash);     // verificar
+```
+
+**Nunca compares contraseñas en texto plano con el hash.** Siempre `matches()`.
+
+---
+
+## 10. Tests (UNSC — `@WebMvcTest`)
+
+```java
+@WebMvcTest(ControllerLogin.class)  // solo ese controller
+class ControllerLoginTest {
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    void loginValidoRedirige() throws Exception {
+        mockMvc.perform(get("/login")
+                .param("nombre", "Fernando")
+                .param("contraseña", "1234"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/credenciales"));
+    }
+}
+```
+
+| Matcher | Qué comprueba |
+|---------|----------------|
+| `status().isOk()` | 200 |
+| `status().is3xxRedirection()` | 302/303 |
+| `redirectedUrl("/ruta")` | A dónde redirige |
+| `view().name("login")` | Qué plantilla renderiza |
+| `model().attribute("usuarios", hasSize(3))` | Atributos del Model |
+
+---
+
+## 11. WebClient — consumir API externa (D1-UD6)
+
+```java
+WebClient client = WebClient.create("https://pokeapi.co/api/v2");
+return client.get()
+    .uri("/pokemon/bulbasaur")
+    .retrieve()
+    .bodyToMono(Pokemon.class);
+```
+
+Dependencia: `spring-boot-starter-webflux`
+
+---
+
+## 12. Estrategia para el examen x20
+
+Cuando te den el enunciado, sigue este orden:
+
+```
+1. ¿WEB o REST?        → @Controller o @RestController
+2. ¿Qué entidades?     → @Entity + getters/setters
+3. ¿Persistencia?    → Repository + application.properties
+4. ¿Lógica?            → @Service
+5. ¿Rutas?             → @GetMapping / @PostMapping + parámetros
+6. ¿Estado entre pasos? → Session, Cookie o campo oculto numEtapa
+7. ¿Validación?        → @Valid + anotaciones en POJO
+8. ¿Seguridad?         → WebSecurityConfig + BCrypt
+9. ¿Vista?             → Thymeleaf + modelo.addAttribute
+10. ¿Tests?            → @WebMvcTest + MockMvc
+```
+
+### Plantilla mental por tipo de ejercicio
+
+| Tipo | Archivos mínimos |
+|------|------------------|
+| Formulario simple | Controller + POJO + 2 HTML |
+| Formulario multi-etapa | + Session/Cookie + redirect |
+| CRUD web | + Repository + Entity + 1 HTML con bucle |
+| API REST | RestController + Service + Repository + Entity |
+| Login manual | HttpSession + redirect + comprobar atributos |
+| Login Security | WebSecurityConfig + login.html |
+| Carrito | Map `@RequestParam` o lista en sesión |
+
+---
+
+## 13. Errores típicos (los que ya aparecen en tu código)
+
+1. **`actualizado.equals(null)`** → usar `actualizado == null`
+2. **DELETE sin comprobar si existe** → `findById` + `orElse` → 404 si no hay
+3. **POST que devuelve vista sin redirect** → refrescar duplica datos → usa `redirect:`
+4. **Olvidar getters/setters** → Spring no enlaza el formulario
+5. **`BindingResult` debe ir justo después de `@Valid`** en los parámetros
+6. **Nombre plantilla** = archivo en `templates/` sin `.html`
+7. **`Optional`**: usar `.orElse(null)`, `.orElseThrow()`, `.map()`, nunca `.get()` a ciegas
+
+---
+
+## 14. Cheat sheet de una línea (repaso rápido antes del examen)
+
+```
+Controller recibe → Service piensa → Repository guarda → Thymeleaf pinta
+GET = mostrar | POST = procesar | redirect: = evitar doble submit
+@PathVariable = URL | @RequestParam = ?query o form | @RequestBody = JSON
+Session = servidor | Cookie = navegador | Security = filtro automático
+CrudRepository: findAll, findById, save, deleteById
+ResponseEntity: ok(200), created(201), notFound(404), noContent(204)
+@Valid + BindingResult.hasErrors() → volver al formulario
+```
+
+---
+
+## 15. Orden de estudio esta noche (2–3 h efectivas)
+
+1. **30 min** — Repasa 1 ejercicio de cada tipo: `Ejercicio1` (Thymeleaf), `UNSC` (sesión), `PrimeraAPIREST` (REST+JPA)
+2. **30 min** — Escribe de memoria un CRUD REST completo con `ResponseEntity`
+3. **20 min** — Formulario encadenado con cookies o sesión
+4. **20 min** — `WebSecurityConfig` + BCrypt
+5. **20 min** — Un test con `MockMvc`
+6. **Resto** — `application.properties` + Entity + Repository
+
+---
+
+Si quieres, en el siguiente mensaje puedo hacerte **simulacro de examen** (enunciado + corrección paso a paso) sobre un tema concreto: REST, sesiones, formularios encadenados, Security o JPA. Dime cuál te cuesta más y lo practicamos como en el examen real.
