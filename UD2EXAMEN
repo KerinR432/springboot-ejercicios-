@@ -1,0 +1,528 @@
+Ruvik, para practicar el examen, lo mejor es que hagas exactamente lo que te pediría el profesor en la entrega. Te voy a preparar una guía completa con lo que deberías implementar, qué observar y qué conclusiones sacar.
+
+---
+
+# Ejercicio 1: Pruebas de codificación GET y POST
+
+## Objetivo
+
+Comprobar cómo se codifican y transmiten caracteres especiales entre navegador y servidor utilizando:
+
+* GET
+* POST
+* Query String manual
+* URLEncoder.encode()
+
+---
+
+# 1. Crear un formulario sencillo
+
+### index.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba Codificación</title>
+</head>
+<body>
+
+<h1>Prueba de caracteres especiales</h1>
+
+<form action="/recibir" method="get">
+    <input type="text" name="texto">
+    <button type="submit">Enviar GET</button>
+</form>
+
+<br>
+
+<form action="/recibir" method="post">
+    <input type="text" name="texto">
+    <button type="submit">Enviar POST</button>
+</form>
+
+</body>
+</html>
+```
+
+---
+
+# 2. Mapping para recibir datos
+
+## Controlador Spring Boot
+
+```java
+@RestController
+public class CodificacionController {
+
+    @GetMapping("/recibir")
+    public String recibirGet(@RequestParam String texto){
+
+        return "GET recibido: " + texto;
+    }
+
+    @PostMapping("/recibir")
+    public String recibirPost(@RequestParam String texto){
+
+        return "POST recibido: " + texto;
+    }
+}
+```
+
+---
+
+# 3. Caracteres a probar
+
+Introducir uno a uno:
+
+```text
+áéíóú
+ñÑ
+\
+/
+'
+"
+`
+<etiqueta>
+<script>alert("hola")</script>
+&
+=
+?
+%
++
+```
+
+---
+
+# 4. Prueba GET
+
+Cuando enviamos:
+
+```text
+España
+```
+
+la URL se transforma en:
+
+```text
+http://localhost:8080/recibir?texto=Espa%C3%B1a
+```
+
+### Observación
+
+La ñ se convierte en:
+
+```text
+%C3%B1
+```
+
+porque se codifica en UTF-8 y luego en hexadecimal.
+
+---
+
+## Ejemplos
+
+### Texto
+
+```text
+á
+```
+
+URL
+
+```text
+%C3%A1
+```
+
+---
+
+### Texto
+
+```text
+Hola Mundo
+```
+
+URL
+
+```text
+Hola+Mundo
+```
+
+o
+
+```text
+Hola%20Mundo
+```
+
+según el navegador.
+
+---
+
+### Texto
+
+```text
+&
+```
+
+URL
+
+```text
+%26
+```
+
+porque el símbolo & separa parámetros.
+
+---
+
+# 5. Examinar POST
+
+Abrir:
+
+```text
+F12 → Network
+```
+
+Seleccionar petición POST.
+
+Observar:
+
+### Cabeceras
+
+```http
+Content-Type:
+application/x-www-form-urlencoded
+```
+
+o
+
+```http
+application/x-www-form-urlencoded;charset=UTF-8
+```
+
+---
+
+### Payload
+
+Si escribimos:
+
+```text
+España
+```
+
+aparece:
+
+```text
+texto=Espa%C3%B1a
+```
+
+---
+
+## Diferencia GET vs POST
+
+GET:
+
+```text
+Los datos aparecen en la URL.
+```
+
+POST:
+
+```text
+Los datos van dentro del cuerpo de la petición.
+```
+
+---
+
+# 6. Probar Query String manual
+
+Escribir directamente en navegador:
+
+```text
+http://localhost:8080/recibir?texto=España
+```
+
+o
+
+```text
+http://localhost:8080/recibir?texto=Espa%C3%B1a
+```
+
+Comprobar que el servidor recibe correctamente:
+
+```text
+España
+```
+
+---
+
+# 7. Usar URLEncoder
+
+Código:
+
+```java
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+String texto = "España & Madrid";
+
+String codificado =
+URLEncoder.encode(texto, StandardCharsets.UTF_8);
+
+System.out.println(codificado);
+```
+
+Resultado:
+
+```text
+Espa%C3%B1a+%26+Madrid
+```
+
+---
+
+# 8. Crear enlace con Query String
+
+```java
+@GetMapping("/recibir")
+public String recibir(@RequestParam String texto)
+throws Exception {
+
+    String enlace =
+            "/mostrar?texto=" +
+            URLEncoder.encode(
+                texto,
+                StandardCharsets.UTF_8
+            );
+
+    return """
+            Texto recibido:
+            %s
+
+            <br><br>
+
+            <a href="%s">
+            Ir a mostrar
+            </a>
+            """.formatted(texto,enlace);
+}
+```
+
+---
+
+## Segundo Mapping
+
+```java
+@GetMapping("/mostrar")
+public String mostrar(@RequestParam String texto){
+
+    return "Texto recibido en mostrar: " + texto;
+}
+```
+
+---
+
+# Conclusiones del Apartado 1
+
+### GET
+
+* Los parámetros viajan en la URL.
+* Los caracteres especiales se codifican.
+* Puede verse el Query String fácilmente.
+
+### POST
+
+* Los parámetros viajan en el body.
+* No aparecen en la URL.
+* También se codifican usando UTF-8.
+
+### URLEncoder
+
+* Permite construir URLs seguras.
+* Evita errores con espacios, acentos o símbolos especiales.
+
+### Caracteres especiales
+
+Todos los caracteres:
+
+```text
+á é í ó ú ñ \ / ' " ` < > & ? = %
+```
+
+son convertidos automáticamente a secuencias compatibles con HTTP.
+
+---
+
+# Ejercicio 2: Internacionalización (i18n)
+
+## Objetivo
+
+Mostrar textos distintos según idioma.
+
+---
+
+# Estructura
+
+```text
+src/main/resources
+
+messages.properties
+messages_es.properties
+messages_en.properties
+```
+
+---
+
+# messages.properties
+
+```properties
+saludo=Hello
+despedida=Goodbye
+```
+
+---
+
+# messages_es.properties
+
+```properties
+saludo=Hola
+despedida=Adiós
+```
+
+---
+
+# Controlador
+
+```java
+@Controller
+public class IdiomaController {
+
+    @Autowired
+    private MessageSource messageSource;
+
+    @GetMapping("/")
+    @ResponseBody
+    public String inicio(Locale locale){
+
+        String saludo =
+                messageSource.getMessage(
+                        "saludo",
+                        null,
+                        locale
+                );
+
+        return saludo;
+    }
+}
+```
+
+---
+
+# Configuración
+
+application.properties
+
+```properties
+spring.messages.basename=messages
+spring.messages.encoding=UTF-8
+```
+
+---
+
+# Prueba
+
+## Navegador en español
+
+Cabecera:
+
+```http
+Accept-Language: es
+```
+
+Resultado:
+
+```text
+Hola
+```
+
+---
+
+## Navegador en inglés
+
+Cabecera:
+
+```http
+Accept-Language: en
+```
+
+Resultado:
+
+```text
+Hello
+```
+
+---
+
+# Problemas encontrados (para poner en la memoria)
+
+### Problema 1
+
+Los acentos aparecían incorrectamente.
+
+#### Solución
+
+Añadir:
+
+```html
+<meta charset="UTF-8">
+```
+
+y
+
+```properties
+spring.messages.encoding=UTF-8
+```
+
+---
+
+### Problema 2
+
+Los parámetros con "&" se cortaban.
+
+#### Solución
+
+Utilizar:
+
+```java
+URLEncoder.encode()
+```
+
+---
+
+### Problema 3
+
+Los mensajes no cambiaban de idioma.
+
+#### Solución
+
+Crear correctamente:
+
+```text
+messages.properties
+messages_es.properties
+messages_en.properties
+```
+
+y configurar Spring Boot.
+
+---
+
+# Conclusiones finales para el PDF
+
+* Se ha comprobado cómo HTTP codifica automáticamente caracteres especiales.
+* GET muestra los datos en la URL mientras que POST los envía en el cuerpo de la petición.
+* UTF-8 permite transmitir correctamente caracteres internacionales como á, é o ñ.
+* URLEncoder es imprescindible para construir Query Strings seguros.
+* La internacionalización de Spring Boot permite adaptar los mensajes al idioma del usuario utilizando ficheros de propiedades y la cabecera Accept-Language.
+* Se han alcanzado todos los objetivos planteados en la práctica comprobando el comportamiento real de la codificación y de la internacionalización.
+
+Si mañana te cae exactamente este ejercicio en el examen, con esta estructura y estos ejemplos tendrías material suficiente para sacar un **Excelente**.
