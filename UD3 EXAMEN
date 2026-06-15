@@ -1,0 +1,321 @@
+Esto es otro ejercicio típico de **Spring Boot + formularios encadenados**. Lo que te están pidiendo es que el estado del formulario (los datos introducidos en etapas anteriores) **no viaje en campos hidden**, sino que se conserve mediante:
+
+1. Cookies.
+2. Sesiones HTTP.
+
+Y además usando únicamente `@RequestParam`.
+
+---
+
+# ¿Qué suele ser el proyecto "formularios-encadenados"?
+
+Normalmente algo así:
+
+## Paso 1
+
+Formulario:
+
+```html
+<form action="/paso2" method="post">
+    Nombre:
+    <input type="text" name="nombre">
+
+    <input type="hidden" name="etapa" value="1">
+
+    <button>Continuar</button>
+</form>
+```
+
+---
+
+## Paso 2
+
+Formulario:
+
+```html
+<form action="/resultado" method="post">
+
+    Edad:
+    <input type="number" name="edad">
+
+    <input type="hidden"
+           name="nombre"
+           value="${nombre}">
+
+    <button>Finalizar</button>
+</form>
+```
+
+---
+
+## Resultado
+
+```text
+Nombre: Juan
+Edad: 20
+```
+
+---
+
+# Lo que quieren ahora
+
+Eliminar:
+
+```html
+<input type="hidden" name="nombre">
+```
+
+y guardar el dato de otra forma.
+
+---
+
+# APARTADO 1: COOKIES
+
+---
+
+## Paso 1
+
+Usuario introduce:
+
+```text
+Juan
+```
+
+---
+
+## Controlador
+
+```java
+@PostMapping("/paso2")
+public String paso2(
+        @RequestParam String nombre,
+        HttpServletResponse response) {
+
+    Cookie cookie =
+            new Cookie("nombre", nombre);
+
+    cookie.setPath("/");
+
+    response.addCookie(cookie);
+
+    return "paso2";
+}
+```
+
+---
+
+## Paso 2
+
+Usuario introduce:
+
+```text
+20
+```
+
+---
+
+## Resultado
+
+```java
+@PostMapping("/resultado")
+@ResponseBody
+public String resultado(
+        @RequestParam Integer edad,
+        @CookieValue("nombre") String nombre) {
+
+    return """
+           Nombre: %s
+           Edad: %d
+           """
+           .formatted(nombre, edad);
+}
+```
+
+---
+
+# ¿Qué ocurre?
+
+1. Petición Paso1
+2. Respuesta incluye:
+
+```http
+Set-Cookie: nombre=Juan
+```
+
+3. Navegador guarda cookie.
+
+4. Nueva petición:
+
+```http
+Cookie: nombre=Juan
+```
+
+5. Spring la recupera.
+
+---
+
+# Reflexión para la memoria
+
+Los datos:
+
+```text
+nombre
+```
+
+se almacenan en el navegador del usuario.
+
+Cada petición posterior envía automáticamente la cookie.
+
+---
+
+# APARTADO 2: SESSION
+
+---
+
+## Paso 1
+
+```java
+@PostMapping("/paso2")
+public String paso2(
+        @RequestParam String nombre,
+        HttpSession session) {
+
+    session.setAttribute(
+            "nombre",
+            nombre);
+
+    return "paso2";
+}
+```
+
+---
+
+## Paso 2
+
+```java
+@PostMapping("/resultado")
+@ResponseBody
+public String resultado(
+        @RequestParam Integer edad,
+        HttpSession session) {
+
+    String nombre =
+            (String) session.getAttribute("nombre");
+
+    return """
+           Nombre: %s
+           Edad: %d
+           """
+           .formatted(nombre, edad);
+}
+```
+
+---
+
+# ¿Qué ocurre?
+
+Spring crea:
+
+```text
+HttpSession
+```
+
+y guarda:
+
+```text
+nombre=Juan
+```
+
+en memoria del servidor.
+
+---
+
+El navegador recibe una cookie:
+
+```text
+JSESSIONID
+```
+
+pero NO contiene el nombre.
+
+Contiene solo el identificador de sesión.
+
+---
+
+# Reflexión para Excelente
+
+Este es justo el apartado que dice el profesor.
+
+## Campos Hidden
+
+Los datos:
+
+```text
+nombre
+edad
+etc.
+```
+
+viajan dentro del HTML.
+
+Cada formulario los vuelve a enviar.
+
+---
+
+## Cookies
+
+Los datos se almacenan en:
+
+```text
+Navegador
+```
+
+y el navegador los envía automáticamente en cada petición.
+
+---
+
+## Sesión
+
+Los datos se almacenan en:
+
+```text
+Servidor
+```
+
+El cliente únicamente guarda:
+
+```text
+JSESSIONID
+```
+
+para identificar la sesión.
+
+---
+
+# Tabla comparativa para el PDF
+
+| Método  | Dónde se guardan los datos |
+| ------- | -------------------------- |
+| Hidden  | HTML del formulario        |
+| Cookie  | Navegador                  |
+| Session | Servidor                   |
+
+| Método  | Visible para usuario |
+| ------- | -------------------- |
+| Hidden  | Sí                   |
+| Cookie  | Sí                   |
+| Session | No                   |
+
+| Método  | Tamaño           |
+| ------- | ---------------- |
+| Hidden  | Depende del HTML |
+| Cookie  | Limitado (~4 KB) |
+| Session | Mucho mayor      |
+
+---
+
+# Conclusión final
+
+Puedes escribir algo parecido:
+
+> Se han implementado dos soluciones alternativas para mantener el estado entre formularios encadenados sin utilizar campos ocultos. En la primera solución se emplean cookies, almacenando la información en el navegador del usuario y enviándola automáticamente en cada petición HTTP. En la segunda solución se utiliza la sesión HTTP, manteniendo los datos en memoria en el servidor y utilizando únicamente un identificador de sesión en el cliente. Ambas soluciones permiten eliminar la necesidad de campos hidden, aunque la gestión mediante sesiones ofrece una mayor seguridad al no exponer directamente los datos al usuario. Esto demuestra distintas estrategias de mantenimiento de estado en aplicaciones web basadas en Spring Boot.
